@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+ # get 'project/new'
+
+  get 'index', to: 'home#index'
+  
+  devise_for :users 
+  devise_scope :user do
+    root "devise/sessions#new" 
+  end
+  resources :project, only: [:index ,:new,:show,:create, :destroy ]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
